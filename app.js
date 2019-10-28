@@ -1,14 +1,17 @@
 const express = require ('express');
-const http = require('http');
+
 
 
 const app = express();
 
-app.use((req,res,next)=>{
-console.log('in the middleware')
-})
+app.use('/user',(req,res,next)=>{
+console.log('in the middleware');
+res.send('<h1> User Page </h1>')
 
-const server= http.createServer(app);
+});
+app.use('/',(req,res,next)=>{
+    console.log('in another middleware');
+    res.send('<h1> Hello, I am Mausam !!!</h1>');
+    });
 
-
-server.listen (3000);
+app.listen(3000);
